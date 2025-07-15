@@ -16,13 +16,13 @@ const Sidebar = ({ isOpen, setSidebarOpen }) => {
   const location = useLocation();
 
   const navigation = [
-    { name: 'Dashboard', path: '/', icon: Home },
-    { name: 'All Tasks', path: '/tasks', icon: List },
-    { name: 'New Task', path: '/tasks/new', icon: Plus },
-    { name: 'My Profile', path: '/profile', icon: User },
-    { name: 'Search', path: '/search', icon: Search },
-    { name: 'Stats', path: '/stats', icon: TrendingUp },
-    { name: 'Users', path: '/users', icon: Users },
+    { name: 'Dashboard', path: '/dashboard', icon: Home },
+    { name: 'All Tasks', path: '/dashboard/tasks', icon: List },
+    { name: 'New Task', path: '/dashboard/tasks/new', icon: Plus },
+    { name: 'My Profile', path: '/dashboard/profile', icon: User },
+    { name: 'Search', path: '/dashboard/search', icon: Search },
+    { name: 'Stats', path: '/dashboard/stats', icon: TrendingUp },
+    { name: 'Users', path: '/dashboard/users', icon: Users },
   ];
 
   const isActive = (path) => location.pathname === path;

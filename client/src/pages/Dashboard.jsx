@@ -8,12 +8,18 @@ import Card from '../components/common/Card';
 import Button from '../components/common/Button';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import TaskCard from '../components/tasks/TaskCard';
+import { useNavigate } from 'react-router-dom';
+import Modal from '../components/common/Modal';
+import TaskForm from '../components/tasks/TaskForm';
 
 const Dashboard = () => {
   const { user } = useAuth();
-  const { tasks, loading: tasksLoading, claimTask } = useTasks();
+  const { tasks, loading: tasksLoading, claimTask, deleteTask, addTask } = useTasks();
   const [userProfile, setUserProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
+  const [addingTask, setAddingTask] = useState(false);
 
   useEffect(() => {
     fetchUserProfile();
@@ -34,6 +40,30 @@ const Dashboard = () => {
     const result = await claimTask(taskId);
     if (result.success) {
       // Refresh user profile to update stats
+      fetchUserProfile();
+    }
+  };
+
+  const handleEditTask = (task) => {
+    navigate(`/dashboard/tasks/edit/${task._id}`);
+  };
+
+  const handleDeleteTask = async (taskId) => {
+    if (window.confirm('Are you sure you want to delete this task?')) {
+      const result = await deleteTask(taskId);
+      if (result.success) {
+        // Optionally refresh tasks or show a notification
+        fetchUserProfile();
+      }
+    }
+  };
+
+  const handleAddTask = async (formData) => {
+    setAddingTask(true);
+    const result = await addTask(formData);
+    setAddingTask(false);
+    if (result.success) {
+      setIsTaskModalOpen(false);
       fetchUserProfile();
     }
   };
@@ -66,7 +96,7 @@ const Dashboard = () => {
           </p>
           <Button
             variant="secondary"
-            onClick={() => window.location.href = '/tasks/new'}
+            onClick={() => navigate('/dashboard/tasks/new')}
             className="bg-yellow-500 text-green-600 hover:bg-gray-50"
           >
             <Plus className="mr-2" size={20} />
@@ -156,7 +186,7 @@ const Dashboard = () => {
           </h2>
           <Button
             variant="outline"
-            onClick={() => window.location.href = '/tasks'}
+            onClick={() => window.location.href = '/dashboard/tasks'}
           >
             View All Tasks
           </Button>
@@ -184,6 +214,8 @@ const Dashboard = () => {
                 <TaskCard
                   task={task}
                   onClaim={handleClaimTask}
+                  onEdit={handleEditTask}
+                  onDelete={handleDeleteTask}
                   currentUser={user}
                 />
               </motion.div>

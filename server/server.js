@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(helmet());
 
 app.use(cors({
-  origin: ['https://taskora-eight.vercel.app'],
+  origin: ['https://taskora-eight.vercel.app', 'http://localhost:3003'],
   credentials: true
 }));
 

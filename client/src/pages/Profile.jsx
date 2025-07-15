@@ -199,7 +199,7 @@ const Profile = () => {
             <Button
               variant="primary"
               className="mt-4"
-              onClick={() => window.location.href = '/tasks'}
+              onClick={() => window.location.href = '/dashboard/tasks'}
             >
               Browse Tasks
             </Button>

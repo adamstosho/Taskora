@@ -14,9 +14,9 @@ const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
   const isActive = (path) => location.pathname === path;
 
   const navigation = [
-    { name: 'Dashboard', path: '/' },
-    { name: 'All Tasks', path: '/tasks' },
-    { name: 'My Profile', path: '/profile' },
+    { name: 'Dashboard', path: '/dashboard' },
+    { name: 'All Tasks', path: '/dashboard/tasks' },
+    { name: 'My Profile', path: '/dashboard/profile' },
   ];
 
   return (
@@ -69,7 +69,7 @@ const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
             <Button
               variant="primary"
               size="sm"
-              onClick={() => window.location.href = '/tasks/new'}
+              onClick={() => window.location.href = '/dashboard/tasks/new'}
               className="hidden sm:flex"
             >
               <Plus size={16} className="mr-1" />
@@ -86,7 +86,7 @@ const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
             {user && (
               <div className="flex items-center space-x-2">
                 <Link
-                  to="/profile"
+                  to="/dashboard/profile"
                   className="flex items-center space-x-2 p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <User size={20} />

@@ -122,7 +122,7 @@ const Tasks = () => {
         </div>
         <Button
           variant="primary"
-          onClick={() => window.location.href = '/tasks/new'}
+          onClick={() => window.location.href = '/dashboard/tasks/new'}
         >
           <Plus className="mr-2" size={20} />
           New Task
