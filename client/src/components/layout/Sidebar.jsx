@@ -11,7 +11,7 @@ import {
   Users
 } from 'lucide-react';
 
-const Sidebar = ({ isOpen }) => {
+const Sidebar = ({ isOpen, setSidebarOpen }) => {
   const location = useLocation();
 
   const navigation = [
@@ -25,6 +25,13 @@ const Sidebar = ({ isOpen }) => {
   ];
 
   const isActive = (path) => location.pathname === path;
+
+  // Function to handle link click and close sidebar on mobile
+  const handleLinkClick = () => {
+    if (window.innerWidth < 768 && setSidebarOpen) {
+      setSidebarOpen(false);
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -50,6 +57,7 @@ const Sidebar = ({ isOpen }) => {
                   <Link
                     key={item.path}
                     to={item.path}
+                    onClick={handleLinkClick}
                     className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                       isActive(item.path)
                         ? 'bg-green-50 text-green-700 dark:bg-green-900 dark:text-green-100'

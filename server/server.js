@@ -24,12 +24,7 @@ app.use(express.json());
 
 // Security middlewares
 app.use(helmet());
-
-app.use(cors({
-  origin: "https://taskora-eight.vercel.app",
-  credentials: true
-}));
-
+app.use(cors());
 app.use(xss());
 app.use(
   rateLimit({
@@ -54,6 +49,15 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Serve uploads directory statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+  });
+});
+
 // Serve static files from client/build in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
@@ -62,13 +66,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "OK",
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
-  });
-});
 
 // Error handler
 app.use(errorHandler);
