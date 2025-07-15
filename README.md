@@ -6,6 +6,9 @@ Taskora is a web application that helps people in Nigerian communities connect, 
 ## Problem Statement
 Many people in local communities need help with daily tasks but do not have an easy way to find trustworthy helpers nearby. Taskora solves this problem by providing a safe and simple platform where users can post tasks, offer help, and build connections in their community.
 
+## Snapshot on how to use
+To test this app effectively; you need to register 2 users. Register one to create a new task and register and login another one, that one can view the tasks created by the previous user and claim it, claiming means, the person is ready to take up the tasks. Isn't this exciting? Yes, then, let's explore the features.
+
 ## Main Features
 - **User Authentication:** Sign up and log in securely with your email and password.
 - **Task Management:** Create, view, edit, delete, and claim tasks posted by others.
@@ -110,6 +113,25 @@ Many people in local communities need help with daily tasks but do not have an e
 
 ## Preview of the App Interface (Screenshot)
 
+![screenshot](/client/public/screencapture-taskora-eight-vercel-app-register-2025-07-15-22_03_35.png)
+Registration of the first user 
+![screenshot](/client/public/screencapture-taskora-eight-vercel-app-login-2025-07-15-22_03_55.png)
+Login Page for the first user to create the task 
+![screenshot](/client/public/screencapture-taskora-eight-vercel-app-2025-07-15-22_04_13.png)
+Dashboard of the first user 
+![screenshot](/client/public/screencapture-taskora-eight-vercel-app-tasks-new-2025-07-15-22_05_58.png)
+The first user creating task
+![screenshot](/client/public/screencapture-taskora-eight-vercel-app-profile-2025-07-15-22_06_42%20(1).png)
+List of the posted tasks by the first user showing the one that has been claimed by other people and the ones yet to be claimed 
+![screenshot](/client/public/screencapture-taskora-eight-vercel-app-tasks-2025-07-15-22_06_20.png)
+This is where the user can delete or edit the posted tasks 
+![screenshot](/client/public/user%202.png)
+This shows the light mode functionality 
+![screenshot](/client/public/user%202_3.png)
+Dashboard of the **second user** to claim the task 
+![screenshot](/client/public/user%202_4.png)
+The page where the second user can claim the task 
+
 
 ## Contributing
 1. Fork this repository.
@@ -119,3 +141,6 @@ Many people in local communities need help with daily tasks but do not have an e
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details. 
+
+### This is made by ART_Redox with 💖💖💖 for the Nigerian communities and beyond
+### Powered by DLT_Africa

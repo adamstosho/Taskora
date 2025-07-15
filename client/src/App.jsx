@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import Tasks from './pages/Tasks';
 import NewTask from './pages/NewTask';
 import Profile from './pages/Profile';
+import Landing from './pages/Landing';
 
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
+            <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/" element={
+            <Route path="/dashboard" element={
               <ProtectedRoute>
                 <Layout />
               </ProtectedRoute>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -8,7 +8,8 @@ import {
   Plus, 
   Search,
   TrendingUp,
-  Users
+  Users,
+  X
 } from 'lucide-react';
 
 const Sidebar = ({ isOpen, setSidebarOpen }) => {
@@ -33,6 +34,14 @@ const Sidebar = ({ isOpen, setSidebarOpen }) => {
     }
   };
 
+  // Close sidebar on route change (mobile only)
+  useEffect(() => {
+    if (window.innerWidth < 768 && isOpen && setSidebarOpen) {
+      setSidebarOpen(false);
+    }
+    // eslint-disable-next-line
+  }, [location.pathname]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -43,6 +52,15 @@ const Sidebar = ({ isOpen, setSidebarOpen }) => {
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           className="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 shadow-lg md:relative md:translate-x-0"
         >
+          {/* Close button for mobile */}
+          <button
+            className="absolute top-4 right-4 md:hidden p-2 rounded-full text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+            onClick={() => setSidebarOpen(false)}
+            aria-label="Close sidebar"
+            type="button"
+          >
+            <X size={24} />
+          </button>
           <div className="flex flex-col h-full pt-20 md:pt-4">
             <div className="px-4 mb-8">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
