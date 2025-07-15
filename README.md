@@ -107,6 +107,10 @@ Many people in local communities need help with daily tasks but do not have an e
 - **Profile:** Manage your account, see your posted and claimed tasks.
 - **Navigation Bar:** Use the sidebar or top bar to move between pages easily.
 
+
+## Preview of the App Interface (Screenshot)
+
+
 ## Contributing
 1. Fork this repository.
 2. Create a new branch for your feature or fix.
