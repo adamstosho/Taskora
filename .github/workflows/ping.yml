@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping the Render App
-        run: curl -s http://localhost:5000/health
+        run: curl -s https://taskora-l2xz.onrender.com/health
 
         
