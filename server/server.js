@@ -57,6 +57,14 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+  });
+});
+
 // Error handler
 app.use(errorHandler);
 
