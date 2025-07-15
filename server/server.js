@@ -24,7 +24,12 @@ app.use(express.json());
 
 // Security middlewares
 app.use(helmet());
-app.use(cors());
+
+app.use(cors({
+  origin: ['https://taskora-eight.vercel.app'],
+  credentials: true
+}));
+
 app.use(xss());
 app.use(
   rateLimit({
